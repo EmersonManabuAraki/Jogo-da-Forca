@@ -16,12 +16,16 @@ class Player
         @words
     end
 
+    def get_hit
+        @hit
+    end
+
     def play_count_miss(word)
         @play += 1
         @words << word
         @chance -= 1
         if(@hit > 0)
-            @hit -= 1 
+            @hit = 0 
         end
         puts "You missed, #{@words}"
     end
@@ -31,6 +35,7 @@ class Player
         @hit += 1
         if(@hit >= 2 && @chance < 3)
             @chance += 1
+            @hit = 0
         end
     end
 
@@ -40,6 +45,11 @@ class Player
 
     def get_points
         calculate
+        @points
+    end
+
+    def get_points_perfect
+        @points = (@chance**2)**2
         @points
     end
 
