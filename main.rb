@@ -40,9 +40,9 @@ player = Player.new
 the_word = the_word.random_elements(selector)
 the_word_cripted = Forca.cript_word(the_word.scan(/./))
 
-while(player.get_chance > 0)
-    puts "Chances left: #{player.get_chance}"
-    puts "Words you attempted: #{player.get_words}"
+while(player.chance > 0)
+    puts "Chances left: #{player.chance}"
+    puts "Words you attempted: #{player.words}"
     puts "Word: #{the_word_cripted.inspect}"
     try = gets.chomp
     if try == the_word
@@ -66,7 +66,7 @@ while(player.get_chance > 0)
         puts "SCORE: #{player.get_points}"
         break
     end
-    if player.get_chance == 0 
+    if player.chance == 0 
         puts "GAME OVER!"
         break
     end
