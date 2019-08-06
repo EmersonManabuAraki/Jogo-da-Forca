@@ -8,18 +8,6 @@ class Player
         @words = []
     end
 
-    def get_chance
-        @chance
-    end
-
-    def get_words
-        @words
-    end
-
-    def get_hit
-        @hit
-    end
-
     def play_count_miss(word)
         @play += 1
         @words << word
@@ -49,7 +37,7 @@ class Player
     end
 
     def get_points_perfect
-        @points = (@chance**2)**2
+        @points = (@chance**3)
         @points
     end
 end
