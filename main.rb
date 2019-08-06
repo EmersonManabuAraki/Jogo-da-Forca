@@ -1,11 +1,18 @@
 load 'forca.rb' 
 load 'category.rb'
 load 'player.rb'
+require 'json'
 
-fruits = Category.new("Apple", "Pineapple", "Blueberry", "Orange", "Lemon")
-geometry = Category.new("Square", "Triangle", "Circunference", "Pentagon", "Rectangle")
-foods = Category.new("Stroganoff", "Curry", "Spaghetti", "French Fries", "Steak")
-electronics = Category.new("Computer", "Smartphone", "Notebook", "Videogame", "Microwave")
+file = File.read("category.json")
+category = JSON.parse(file)
+category_array = []
+i = 0
+
+category.each {|key, value| 
+    category_array[i] = Category.new(value)
+    i += 1
+}
+
 
 puts "Select a category: \n 1 - Fruits\n 2 - Geometry\n 3 - Foods\n 4 - Electronics\n"
 
@@ -13,16 +20,16 @@ selector = gets.chomp
 
 case selector
 when "1"
-    selector = fruits.get_category
+    p selector = category_array[0].get_category
     puts "You've selected Fruits"
 when "2"
-    selector = geometry.get_category
+    selector = category_array[1].get_category
     puts "You've selected Geometry"
 when "3"
-    selector = foods.get_category
+    selector = category_array[2].get_category
     puts "You've selected Foods"
 when "4"
-    selector = electronics.get_category
+    selector = category_array[3].get_category
     puts "You've selected Electronics"
 else
     puts "You write something wrong, try again!"
@@ -40,6 +47,7 @@ while(player.get_chance > 0)
     try = gets.chomp
     if(try == the_word)
         puts "YOU WIN!"
+        puts "SCORE: #{player.get_points_perfect}"
         break
     end
     if(try.size == the_word.size && try != the_word)
@@ -55,7 +63,7 @@ while(player.get_chance > 0)
     end
     if(the_word_cripted == the_word.scan(/./))
         puts "YOU WIN!"
-        puts "SCORE: #{player.get_points}""
+        puts "SCORE: #{player.get_points}"
         break
     end
     if(player.get_chance == 0)
