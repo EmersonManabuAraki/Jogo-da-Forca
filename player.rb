@@ -52,5 +52,4 @@ class Player
         @points = (@chance**2)**2
         @points
     end
-
 end
