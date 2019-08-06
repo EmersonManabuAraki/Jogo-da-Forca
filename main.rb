@@ -8,10 +8,10 @@ category = JSON.parse(file)
 category_array = []
 i = 0
 
-category.each {|key, value| 
+category.each do |key, value| 
     category_array[i] = Category.new(value)
     i += 1
-}
+end
 
 
 puts "Select a category: \n 1 - Fruits\n 2 - Geometry\n 3 - Foods\n 4 - Electronics\n"
@@ -45,28 +45,28 @@ while(player.get_chance > 0)
     puts "Words you attempted: #{player.get_words}"
     puts "Word: #{the_word_cripted.inspect}"
     try = gets.chomp
-    if(try == the_word)
+    if try == the_word
         puts "YOU WIN!"
         puts "SCORE: #{player.get_points_perfect}"
         break
     end
-    if(try.size == the_word.size && try != the_word)
+    if try.size == the_word.size && try != the_word 
         puts "GAME OVER!"
         break
     end
-    if(the_word.include?(try))
+    if the_word.include?(try) 
         index = the_word.scan(/./).each_with_index.select {|word, index| word == try}.map {|pair| pair[1]}
         index.each {|e| the_word_cripted[e] = try }
         player.play_count_hit(try)
     else
         player.play_count_miss(try)
     end
-    if(the_word_cripted == the_word.scan(/./))
+    if the_word_cripted == the_word.scan(/./) 
         puts "YOU WIN!"
         puts "SCORE: #{player.get_points}"
         break
     end
-    if(player.get_chance == 0)
+    if player.get_chance == 0 
         puts "GAME OVER!"
         break
     end
