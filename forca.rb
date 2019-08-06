@@ -10,8 +10,7 @@ class Forca
     end
 
     def random_elements(category)
-        @word = category[rand(0...5)]
-        @word.downcase
+        @word = category[rand(0...5)].downcase
     end
 
     def self.cript_word(word)
