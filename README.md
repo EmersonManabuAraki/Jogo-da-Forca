@@ -1,5 +1,15 @@
 # Jogo-da-Forca(Hangman Game)
 
-Score calculate: Number of letter you hitted * Chances left
-When you hit the letter you gain one point being the maximum 2, but if you miss you lose one point.
-The chances left is your remaining amount of chances.
+##Hangman Game's score criterion
+
+Number of your hits
+
+Word's size
+
+Sequence number you hit
+
+##Hangman Game's score calculation
+
+When you hit the letter two times in sequence, you gain one chance if you haven't more than three chances
+
+The score is calculated by: (1 + Number of hits you had two times in sequence) * ( 1 + Word's size - Number of hit you had) * Your remaining chances
