@@ -33,13 +33,13 @@ end
 forca_word = Forca.new
 player = Player.new
 forca_word = forca_word.random_elements(selector)
-the_word_cripted = Forca.cript_word(forca_word.scan(/./))
+cripted_word = Forca.cript_word(forca_word.scan(/./))
 
 while(player.chance > 0)
     puts "\n"
     puts "Chances left: #{player.chance}"
     puts "Words you attempted: #{player.letters}"
-    puts "Word: #{the_word_cripted.inspect}"
+    puts "Word: #{cripted_word.inspect}"
     try = gets.chomp
     if try == forca_word
         puts "YOU WIN!"
@@ -51,12 +51,12 @@ while(player.chance > 0)
         break
     end
     if forca_word.include?(try)
-        if the_word_cripted.include?(try)
+        if cripted_word.include?(try)
             puts "You already input this letter"
             next
         end 
         index = forca_word.scan(/./).each_with_index.select {|word, index| word == try}.map {|pair| pair[1]}
-        index.each {|e| the_word_cripted[e] = try }
+        index.each {|e| cripted_word[e] = try }
         player.play_count_hit
     elsif player.letters.include?(try) 
         puts "You already tried this letter"
@@ -67,7 +67,7 @@ while(player.chance > 0)
     else
         player.play_count_miss(try)
     end
-    if the_word_cripted == forca_word.scan(/./) 
+    if cripted_word == forca_word.scan(/./) 
         puts "YOU WIN!"
         puts "SCORE: #{player.get_points(forca_word)}"
         break
