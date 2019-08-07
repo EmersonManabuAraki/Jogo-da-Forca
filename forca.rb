@@ -13,6 +13,12 @@ class Forca
     end
 
     def self.cript_word(letter)
-        @word = letter.map {|e| e = "_"}
+        @word = letter.map do |char| 
+            if char ==  " "
+                char = " "
+            else
+                char = "_"
+            end
+        end
     end
 end
