@@ -1,7 +1,8 @@
 class Category
-    attr_accessor :category
+    attr_accessor :words, :name
     
-    def initialize(words)
-        @category = words
+    def initialize(name, words)
+        @words = words
+        @name = name
     end
 end
