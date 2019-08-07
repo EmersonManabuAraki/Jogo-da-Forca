@@ -1,15 +1,15 @@
 class Player
-    attr_accessor :play, :chance, :words, :hit, :points, :hit_combo
+    attr_accessor :play, :chance, :letters, :hit, :points, :hit_combo
 
     def initialize
-        @play = 0
-        @chance = 3
         @hit = 0
+        @chance = 3
+        @hit_count = 0
         @letters = []
+        @hit_combo = 0
     end
 
     def play_count_miss(letter)
-        @play += 1
         @letters << letter
         @chance -= 1
         if(@hit > 0)
@@ -19,7 +19,7 @@ class Player
     end
 
     def play_count_hit
-        @play += 1
+        @hit_count += 1
         @hit += 1
         if(@hit >= 2 && @chance < 3)
             @chance += 1
@@ -28,17 +28,11 @@ class Player
         end
     end
 
-    def calculate
-        @points = (@hit + 1) * @chance
+    def calculate(word)
+        @points =  (1 + @hit_combo) * (1 + word.size - @hit_count) * @chance
     end
 
-    def get_points
-        calculate
-        @points
-    end
-
-    def get_points_perfect
-        @points = (@chance**3)
-        @points
+    def get_points(word)
+        calculate(word)
     end
 end
