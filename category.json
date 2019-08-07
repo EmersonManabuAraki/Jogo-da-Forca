@@ -1,26 +1,26 @@
 {
-    "fruits": [
+    "Fruits": [
         "Apple",
         "Pineapple", 
         "Blueberry", 
         "Orange", 
         "Lemon"
     ],
-    "geometry": [
+    "Geometry": [
         "Square", 
         "Triangle", 
         "Circunference", 
         "Pentagon", 
         "Rectangle"
     ],
-    "foods": [
+    "Foods": [
         "Stroganoff", 
         "Curry", 
         "Spaghetti", 
         "French Fries", 
         "Steak"
     ],
-    "electronics": [
+    "Electronics": [
         "Computer", 
         "Smartphone", 
         "Notebook", 
