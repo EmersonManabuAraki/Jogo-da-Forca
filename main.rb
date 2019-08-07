@@ -23,8 +23,7 @@ puts "Write the category name"
 selector = gets.chomp
 
 categories.each do |category|
-    case selector
-    when category.name 
+    if selector.capitalize == category.name 
         puts "You've selected #{category.name}"
         selector = category.words
         break
